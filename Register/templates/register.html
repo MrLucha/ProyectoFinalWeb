@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mi primer Login</title>
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link href="{% static 'styles/styles.css' %}" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'Landing:landing'%}">Pagina de inicio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- NAV BAR -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'Login:login'%}">Login
+                  <span class="sr-only">(current)</span>
+                </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Register</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FIN NAV BAR -->
+    </div>
+  </nav>
+</div>
+<div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4 formulario">
+        <div class="col-12 user-img text-center">
+            <img src="{% static 'styles/avatar.png' %}"/>
+        </div>
+        <form method="POST">
+          <div class="form-group text-center">
+            <h3>Registra tus datos</h3>
+          </div>
+          <!--Inicio cifrado-->
+          {% csrf_token %}
+          <!--fin cifrado-->
+          {% if form_get.username.value %}
+          {{ form_get.username }}
+          {% else %}
+          {{ form_get.username }}
+          {% endif %}
+          <br>
+          {% if form_get.first_name.value %}
+          {{ form_get.first_name }}
+          {% else %}
+          {{ form_get.first_name }}
+          {% endif %}
+          <br>
+          {% if form_get.last_name.value %}
+          {{ form_get.last_name }}
+          {% else %}
+          {{ form_get.last_name }}
+          {% endif %}
+          <br>
+          {% if form_get.password.value %}
+          {{ form_get.password }}
+          {% else %}
+          {{ form_get.password }}
+          {% endif %}
+          <br>
+          {% if form_get.email.value %}
+          {{ form_get.email }}
+          {% else %}
+          {{ form_get.email }}
+          {% endif %}
+          <br>
+          <div style="text-align: center">
+              <button type="submit" class="btn btn-primary">Registrar</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

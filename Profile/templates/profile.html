@@ -1,0 +1,87 @@
+{% load static %}
+<! doctype html />
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <link href="{% static 'styles/style3.css' %}" type="text/css" rel="stylesheet">
+    <title>Profile</title>
+
+
+    {% load bootstrap4 %}
+
+    {% bootstrap_css %}
+
+
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'Landing:landing'%}">Pagina de inicio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- NAV BAR -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href= "{% url 'logout' %}">Cerar Sesion</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FIN NAV BAR -->
+    </div>
+  </nav>
+
+    <div class="cabecera">
+      <!-- hola soy header -->
+      <div class="div0">
+        <img class="user-img2" src="{% static 'styles/adidas.png' %}"/>
+      </div>
+      <div class="div1">
+        <img class="user-img" src="{% static 'styles/logo.png' %}"/>
+      </div>
+
+      <!-- Creando div general para los dos divs -->
+      <div class="divgeneral">
+        <div class="div2">
+          <h1 class="estilo1">CLUB ATLETICO RIVER PLATE</h1>
+        </div>
+        <div class="div3">
+          <h1 class="estilo2">Sitio web oficial.</h1>
+        </div>
+      </div>
+      <!-- <div class="user-img">
+        <img src="{% static 'styles/logo.png' %}"/>
+        <p class="estilo1">CLUB ATLETICO RIVER PLATE</p>
+        <br>
+        <p class="estilo2">Sitio web oficial.</p>
+      </div> -->
+    </div>
+    <div class="divprofile">
+      <div class="divProfile1">
+        <p class="estilo3">Bienvenido {{user.username}}</p>
+      </div>
+    </div>
+
+  <!-- Bienvenida con nombre de usuario -->
+  <!-- <h1>{{user.username}} Bienvenido</h1> -->
+    <!-- <h1>Hola soy dashboard</h1>
+    <br>
+    <h1>Bienvenido {{user.username}} </h1>
+    <a href= "{% url 'logout' %}">Cerrar Sesion</a> -->
+</body>
+
+
+</html>

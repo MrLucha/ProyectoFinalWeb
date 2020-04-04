@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mi primer Login</title>
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link href="{% static 'styles/styles.css' %}" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'Landing:landing'%}">Pagina de inicio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- NAV BAR -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link">Login
+                  <span class="sr-only">(current)</span>
+                </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Register:register'%}">Register</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FIN NAV BAR -->
+    </div>
+  </nav>
+</div>
+<div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4 formulario">
+        <div class="col-12 user-img text-center">
+            <img src="{% static 'styles/avatar.png' %}"/>
+        </div>
+        <form method="POST">
+          <!--Inicio cifrado-->
+          {% csrf_token %}
+          <!--fin cifrado-->
+          <div class="form-group text-center">
+            <h3>Inicia Sesion</h3>
+          </div>
+          <!-- Inputs-->
+          <!-- AQUI SE CAMBIA COLOR DE TEXTO INPUT -->
+          <div class="form-group mx-sm-4 pt-2" id="user-group">
+            <input type="text"style="color:black" class="form-control" id="example2"
+            aria-describedby="emailHelp" placeholder="Usuario" name="user" required>
+          </div>
+          <div class="form-group mx-sm-4 pb-2" id="contrasena-group">
+            <input type="password" style="color:black" class="form-control" id="example1"
+            placeholder="Contraseña" name="password" required>
+          </div>
+          <div class="form-group mx-sm-4">
+            <button type="submit" class="btn btn-block ingresar">Aceptar</button>
+            <br>
+            {% if error %}
+            <br>
+            <div class="alert alert-warning" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
